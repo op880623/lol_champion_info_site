@@ -16,4 +16,4 @@ def reccent_update(request):
     table = ChampionTable(Champion.objects.filter(update_date__gte=timezone.now()-datetime.timedelta(days=7)), exclude = ('id'), order_by = '-update_date')
     title = 'Reccent Update Champion'
     RequestConfig(request, paginate={'per_page': 50}).configure(table)
-    return render(request, 'champion/champion_info.html', {'table': table, 'title': title})
+    return render(request, 'champion/reccent_update.html', {'table': table, 'title': title})
