@@ -1,0 +1,147 @@
+.page-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #466995;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.page-header h1 {
+  padding: 0 50px;
+  color: #FFF;
+  font-family: 'Covered By Your Grace', sans-serif;
+}
+
+div.table-container {
+  position: absolute;
+  top: 120px;
+  margin: 0 7.5%;
+  padding: 0;
+  width: 85%;
+}
+
+table.table_style {
+  border-collapse: collapse;
+  border-color: #CCC;
+  border: 1px solid #DDD;
+  font: normal 11px/14px 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif;
+}
+
+table.table_style a:link, table.table_style a:visited {
+  color: #5B80B2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+table.table_style a:hover {
+  color: #036;
+}
+
+table.table_style td, table.table_style th {
+  padding: 5px;
+  line-height: 13px;
+  border-bottom: 1px solid #EEE;
+  border-left: 1px solid #DDD;
+  text-align: left;
+}
+
+table.table_style thead td, table.table_style thead th {
+  background: #FCFCFC url(./images/header-bg.png) left bottom repeat-x;
+  border-bottom: 1px solid #DDD;
+  padding: 2px 5px;
+  font-size: 11px;
+  vertical-align: middle;
+  color: #666;
+  first-child-border-left: none !important;
+}
+
+table.table_style thead th > a:link, table.table_style thead th > a:visited {
+  color: #666;
+}
+
+table.table_style thead th.orderable > a {
+  padding-right: 20px;
+  background: url(./images/arrow-inactive-up.png) right center no-repeat;
+}
+
+table.table_style thead th.orderable.asc > a {
+  background-image: url(./images/arrow-active-up.png);
+}
+
+table.table_style thead th.orderable.desc > a {
+  background-image: url(./images/arrow-active-down.png);
+}
+
+table.table_style tr.odd {
+  background-color: #EDF3FE;
+}
+
+table.table_style tr.even {
+  background-color: white;
+}
+
+table.table_style > tbody > tr > td.name, table.table_style > tbody > tr > td.eng_name {
+  min-width: 70px;
+}
+
+table.table_style > tbody > tr > td {
+  /*min-width: 45px*/
+}
+
+table.table_style > tbody > tr > td > span.true, table.table_style > tbody > tr > td > span.false {
+  background-position: top left;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 10px;
+  overflow: hidden;
+  text-indent: -200px;
+  width: 10px;
+}
+
+table.table_style > tbody > tr > td > .missing {
+  background: transparent url(./images/missing.png) right center no-repeat;
+  color: #717171;
+  padding-right: 20px;
+}
+
+table.table_style > tbody > tr > td > .missing:hover {
+  color: #333;
+}
+
+table.table_style > tbody > tr > td > span.true {
+  background-image: url(./images/true.gif);
+}
+
+table.table_style > tbody > tr > td > span.false {
+  background-image: url(./images/false.gif);
+}
+
+table.table_style + ul.pagination {
+  font: normal 11px/14px 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif;
+  background: white url(./images/pagination-bg.gif) left 180% repeat-x;
+  overflow: auto;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #DDD;
+  list-style: none;
+}
+
+table.table_style + ul.pagination > li {
+  float: left;
+  line-height: 22px;
+  margin-left: 10px;
+  first-child-margin-left: 0;
+}
+
+table.table_style + ul.pagination > li > a {
+  color: #5B80B2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+table.table_style + ul.pagination > li.cardinality {
+  float: right;
+  color: #8d8d8d;
+}

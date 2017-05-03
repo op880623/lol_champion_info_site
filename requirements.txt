@@ -1,0 +1,10 @@
+beautifulsoup4==4.5.1
+dj-database-url==0.4.1
+Django==1.11
+django-tables2==1.4.2
+gunicorn==19.6.0
+lxml==3.7.1
+psycopg2==2.6.2
+requests==2.12.4
+selenium==3.0.2
+whitenoise==3.2
