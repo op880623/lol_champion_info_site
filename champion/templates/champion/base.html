@@ -10,9 +10,16 @@
 <body>
     <div class="page-header">
         <h1>{% block title %}{% endblock %}/<small><a href="{% block link %}{% endblock %}">{% block link_name %}{% endblock %}</a></small></h1>
-
     </div>
+
     {% block content %}
     {% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Copyright &copy; <a href="https://github.com/op880623/lol_champion_info_site">Hong Tai-Rong</a> 2017</p>
+        </div>
+    </footer>
 </body>
 </html>
