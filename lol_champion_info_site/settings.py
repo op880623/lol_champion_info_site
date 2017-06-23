@@ -30,7 +30,6 @@ DEBUG = False
 
 INSTALLED_APPS = [
     'champion.apps.ChampionConfig',
-    'django_tables2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

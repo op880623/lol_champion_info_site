@@ -34,5 +34,45 @@ class Champion(models.Model):
     spellblockmax        = models.FloatField(max_length=10, default=0)
     update_date          = models.DateTimeField('update date')
 
+    attributes = [
+        'name',
+        'eng_name',
+        'hp',
+        'hpperlevel',
+        'hpmax',
+        'hpregen',
+        'hpregenperlevel',
+        'hpregenmax',
+        'mp',
+        'mpperlevel',
+        'mpmax',
+        'mpregen',
+        'mpregenperlevel',
+        'mpregenmax',
+        'movespeed',
+        'attackdamage',
+        'attackdamageperlevel',
+        'attackdamagemax',
+        'attackspeed',
+        'attackspeedperlevel',
+        'attackrange',
+        'armor',
+        'armorperlevel',
+        'armormax',
+        'spellblock',
+        'spellblockperlevel',
+        'spellblockmax',
+        'update_date'
+    ]
+
     def __str__(self):
         return self.name
+
+    def to_json(self):
+        attrlist=[]
+        for attr in self.attributes:
+            if isinstance(getattr(self, attr), (int, float)):
+                attrlist.append('"' + attr + '": ' + str(getattr(self, attr)) + '')
+            else:
+                attrlist.append('"' + attr + '": "' + str(getattr(self, attr)) + '"')
+        return '{' + ', '.join(attrlist) + '}'

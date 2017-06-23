@@ -47,7 +47,7 @@ table.table_style td, table.table_style th {
   text-align: left;
 }
 
-table.table_style thead td, table.table_style thead th {
+table.table_style tr > th {
   background: #FCFCFC url(./images/header-bg.png) left bottom repeat-x;
   border-bottom: 1px solid #DDD;
   padding: 2px 5px;
@@ -57,61 +57,8 @@ table.table_style thead td, table.table_style thead th {
   first-child-border-left: none !important;
 }
 
-table.table_style thead th > a:link, table.table_style thead th > a:visited {
-  color: #666;
-}
-
-table.table_style thead th.orderable > a {
-  padding-right: 20px;
-  background: url(./images/arrow-inactive-up.png) right center no-repeat;
-}
-
-table.table_style thead th.orderable.asc > a {
-  background-image: url(./images/arrow-active-up.png);
-}
-
-table.table_style thead th.orderable.desc > a {
-  background-image: url(./images/arrow-active-down.png);
-}
-
-table.table_style tr.odd {
-  background-color: #EDF3FE;
-}
-
-table.table_style tr.even {
-  background-color: white;
-}
-
-table.table_style > tbody > tr > td.name, table.table_style > tbody > tr > td.eng_name {
+table.table_style td.name, table.table_style td.eng_name {
   min-width: 70px;
-}
-
-table.table_style > tbody > tr > td > span.true, table.table_style > tbody > tr > td > span.false {
-  background-position: top left;
-  background-repeat: no-repeat;
-  display: inline-block;
-  height: 10px;
-  overflow: hidden;
-  text-indent: -200px;
-  width: 10px;
-}
-
-table.table_style > tbody > tr > td > .missing {
-  background: transparent url(./images/missing.png) right center no-repeat;
-  color: #717171;
-  padding-right: 20px;
-}
-
-table.table_style > tbody > tr > td > .missing:hover {
-  color: #333;
-}
-
-table.table_style > tbody > tr > td > span.true {
-  background-image: url(./images/true.gif);
-}
-
-table.table_style > tbody > tr > td > span.false {
-  background-image: url(./images/false.gif);
 }
 
 table.table_style + ul.pagination {
@@ -140,6 +87,14 @@ table.table_style + ul.pagination > li > a {
 table.table_style + ul.pagination > li.cardinality {
   float: right;
   color: #8d8d8d;
+}
+
+.selected {
+  background-color: #EDF3FE;
+}
+
+.ordered {
+  background-color: #EDF3FE;
 }
 
 body {
