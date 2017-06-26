@@ -25,6 +25,17 @@ app.controller('customersCtrl', function($scope, $http) {
         document.getElementById('link').href = url_update;
     }
 
+    $scope.has_selected_column = function () {
+        about_hp = $scope.show_hp || $scope.show_hpperlevel || $scope.show_hpmax || $scope.show_hpregen || $scope.show_hpregenperlevel || $scope.show_hpregenmax;
+        about_mp = $scope.show_mp || $scope.show_mpperlevel || $scope.show_mpmax || $scope.show_mpregen || $scope.show_mpregenperlevel || $scope.show_mpregenmax;
+        about_attack = $scope.show_attackdamage || $scope.show_attackdamageperlevel || $scope.show_attackdamagemax || $scope.show_attackspeed || $scope.show_attackspeedperlevel || $scope.show_attackspeedmax;
+        about_armor = $scope.show_armor || $scope.show_armorperlevel || $scope.show_armormax || $scope.show_spellblock || $scope.show_spellblockperlevel || $scope.show_spellblockmax;
+        about_other = $scope.show_movespeed || $scope.show_attackrange;
+        return about_hp || about_mp || about_attack || about_armor || about_other;
+    }
+    $scope.show_column = function (item) {
+        return item || !$scope.has_selected_column();
+    }
 
     // angular.copy($scope.champions, $scope.champions_to_list);
 
@@ -44,7 +55,7 @@ app.controller('customersCtrl', function($scope, $http) {
         return $scope.page * $scope.items_per_page > $scope.champions.length;
     }
     $scope.page_start = function () {
-        return ($scope.page - 1) * $scope.items_per_page
+        return ($scope.page - 1) * $scope.items_per_page;
     }
     $scope.item_index = function (index) {
         return $scope.page_start() + index + 1;
@@ -78,6 +89,6 @@ app.controller('customersCtrl', function($scope, $http) {
 
 
     $scope.format_time = function (time) {
-        return time.replace(/\.\d+\+00:00/i, '')
+        return time.replace(/\.\d+\+00:00/i, '');
     }
 });

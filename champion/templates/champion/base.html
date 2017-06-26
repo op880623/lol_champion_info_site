@@ -17,36 +17,78 @@
 </div>
 
 <div class="table-container" ng-app="myApp" ng-controller="customersCtrl">
+    <table class="table_checkbox">
+        <tr>
+            <td><input type="checkbox" ng-model="show_hp">生命</td>
+            <td><input type="checkbox" ng-model="show_mp">魔力</td>
+            <td><input type="checkbox" ng-model="show_attackdamage">物理攻擊</td>
+            <td><input type="checkbox" ng-model="show_armor">物理防禦</td>
+            <td><input type="checkbox" ng-model="show_attackrange">攻擊距離</td>
+
+        </tr>
+        <tr>
+            <td><input type="checkbox" ng-model="show_hpperlevel">生命成長</td>
+            <td><input type="checkbox" ng-model="show_mpperlevel">魔力成長</td>
+            <td><input type="checkbox" ng-model="show_attackdamageperlevel">物理攻擊成長</td>
+            <td><input type="checkbox" ng-model="show_armorperlevel">物理防禦成長</td>
+            <td><input type="checkbox" ng-model="show_movespeed">移動速度</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ng-model="show_hpmax">最大生命</td>
+            <td><input type="checkbox" ng-model="show_mpmax">最大魔力</td>
+            <td><input type="checkbox" ng-model="show_attackdamagemax">最大物理攻擊</td>
+            <td><input type="checkbox" ng-model="show_armormax">最大物理防禦</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ng-model="show_hpregen">生命回復</td>
+            <td><input type="checkbox" ng-model="show_mpregen">魔力回復</td>
+            <td><input type="checkbox" ng-model="show_attackspeed">攻擊速度</td>
+            <td><input type="checkbox" ng-model="show_spellblock">魔法防禦</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ng-model="show_hpregenperlevel">生命回復成長</td>
+            <td><input type="checkbox" ng-model="show_mpregenperlevel">魔力回復成長</td>
+            <td><input type="checkbox" ng-model="show_attackspeedperlevel">攻擊速度成長</td>
+            <td><input type="checkbox" ng-model="show_spellblockperlevel">魔法防禦成長</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ng-model="show_hpregenmax">最大生命回復</td>
+            <td><input type="checkbox" ng-model="show_mpregenmax">最大魔力回復</td>
+            <td><input type="checkbox" ng-model="show_attackspeedmax">最大攻擊速度</td>
+            <td><input type="checkbox" ng-model="show_spellblockmax">最大魔法防禦</td>
+        </tr>
+    </table>
     <table class="table_style">
         <tr>
             <th></th>
             <th class="name" ng-click="order_by('name')">名字</th>
             <th class="eng_name" ng-click="order_by('eng_name')">英文</th>
-            <th class="hp" ng-click="order_by('hp')">生命</th>
-            <th class="hpperlevel" ng-click="order_by('hpperlevel')">生命<br>成長</th>
-            <th class="hpmax" ng-click="order_by('hpmax')">最大<br>生命</th>
-            <th class="hpregen" ng-click="order_by('hpregen')">生命<br>回復</th>
-            <th class="hpregenperlevel" ng-click="order_by('hpregenperlevel')">生命<br>回復<br>成長</th>
-            <th class="hpregenmax" ng-click="order_by('hpregenmax')">最大<br>生命<br>回復</th>
-            <th class="mp" ng-click="order_by('mp')">魔力</th>
-            <th class="mpperlevel" ng-click="order_by('mpperlevel')">魔力<br>成長</th>
-            <th class="mpmax" ng-click="order_by('mpmax')">最大<br>魔力</th>
-            <th class="mpregen" ng-click="order_by('mpregen')">魔力<br>回復</th>
-            <th class="mpregenperlevel" ng-click="order_by('mpregenperlevel')">魔力<br>回復<br>成長</th>
-            <th class="mpregenmax" ng-click="order_by('mpregenmax')">最大<br>魔力<br>回復</th>
-            <th class="movespeed" ng-click="order_by('movespeed')">移動<br>速度</th>
-            <th class="attackdamage" ng-click="order_by('attackdamage')">物理<br>攻擊</th>
-            <th class="attackdamageperlevel" ng-click="order_by('attackdamageperlevel')">物理<br>攻擊<br>成長</th>
-            <th class="attackdamagemax" ng-click="order_by('attackdamagemax')">最大<br>物理<br>攻擊</th>
-            <th class="attackspeed" ng-click="order_by('attackspeed')">攻擊<br>速度</th>
-            <th class="attackspeedperlevel" ng-click="order_by('attackspeedperlevel')">攻擊<br>速度<br>成長</th>
-            <th class="attackrange" ng-click="order_by('attackrange')">攻擊<br>距離</th>
-            <th class="armor" ng-click="order_by('armor')">物理<br>防禦</th>
-            <th class="armorperlevel" ng-click="order_by('armorperlevel')">物理<br>防禦<br>成長</th>
-            <th class="armormax" ng-click="order_by('armormax')">最大<br>物理<br>防禦</th>
-            <th class="spellblock" ng-click="order_by('spellblock')">魔法<br>防禦</th>
-            <th class="spellblockperlevel" ng-click="order_by('spellblockperlevel')">魔法<br>防禦<br>成長</th>
-            <th class="spellblockmax" ng-click="order_by('spellblockmax')">最大<br>魔法<br>防禦</th>
+            <th class="hp" ng-click="order_by('hp')" ng-show="show_column(show_hp)">生命</th>
+            <th class="hpperlevel" ng-click="order_by('hpperlevel')" ng-show="show_column(show_hpperlevel)">生命<br>成長</th>
+            <th class="hpmax" ng-click="order_by('hpmax')" ng-show="show_column(show_hpmax)">最大<br>生命</th>
+            <th class="hpregen" ng-click="order_by('hpregen')" ng-show="show_column(show_hpregen)">生命<br>回復</th>
+            <th class="hpregenperlevel" ng-click="order_by('hpregenperlevel')" ng-show="show_column(show_hpregenperlevel)">生命<br>回復<br>成長</th>
+            <th class="hpregenmax" ng-click="order_by('hpregenmax')" ng-show="show_column(show_hpregenmax)">最大<br>生命<br>回復</th>
+            <th class="mp" ng-click="order_by('mp')" ng-show="show_column(show_mp)">魔力</th>
+            <th class="mpperlevel" ng-click="order_by('mpperlevel')" ng-show="show_column(show_mpperlevel)">魔力<br>成長</th>
+            <th class="mpmax" ng-click="order_by('mpmax')" ng-show="show_column(show_mpmax)">最大<br>魔力</th>
+            <th class="mpregen" ng-click="order_by('mpregen')" ng-show="show_column(show_mpregen)">魔力<br>回復</th>
+            <th class="mpregenperlevel" ng-click="order_by('mpregenperlevel')" ng-show="show_column(show_mpregenperlevel)">魔力<br>回復<br>成長</th>
+            <th class="mpregenmax" ng-click="order_by('mpregenmax')" ng-show="show_column(show_mpregenmax)">最大<br>魔力<br>回復</th>
+            <th class="movespeed" ng-click="order_by('movespeed')" ng-show="show_column(show_movespeed)">移動<br>速度</th>
+            <th class="attackdamage" ng-click="order_by('attackdamage')" ng-show="show_column(show_attackdamage)">物理<br>攻擊</th>
+            <th class="attackdamageperlevel" ng-click="order_by('attackdamageperlevel')" ng-show="show_column(show_attackdamageperlevel)">物理<br>攻擊<br>成長</th>
+            <th class="attackdamagemax" ng-click="order_by('attackdamagemax')" ng-show="show_column(show_attackdamagemax)">最大<br>物理<br>攻擊</th>
+            <th class="attackspeed" ng-click="order_by('attackspeed')" ng-show="show_column(show_attackspeed)">攻擊<br>速度</th>
+            <th class="attackspeedperlevel" ng-click="order_by('attackspeedperlevel')" ng-show="show_column(show_attackspeedperlevel)">攻擊<br>速度<br>成長</th>
+            <th class="attackspeedmax" ng-click="order_by('attackspeedmax')" ng-show="show_column(show_attackspeedmax)">最大<br>攻擊<br>速度</th>
+            <th class="attackrange" ng-click="order_by('attackrange')" ng-show="show_column(show_attackrange)">攻擊<br>距離</th>
+            <th class="armor" ng-click="order_by('armor')" ng-show="show_column(show_armor)">物理<br>防禦</th>
+            <th class="armorperlevel" ng-click="order_by('armorperlevel')" ng-show="show_column(show_armorperlevel)">物理<br>防禦<br>成長</th>
+            <th class="armormax" ng-click="order_by('armormax')" ng-show="show_column(show_armormax)">最大<br>物理<br>防禦</th>
+            <th class="spellblock" ng-click="order_by('spellblock')" ng-show="show_column(show_spellblock)">魔法<br>防禦</th>
+            <th class="spellblockperlevel" ng-click="order_by('spellblockperlevel')" ng-show="show_column(show_spellblockperlevel)">魔法<br>防禦<br>成長</th>
+            <th class="spellblockmax" ng-click="order_by('spellblockmax')" ng-show="show_column(show_spellblockmax)">最大<br>魔法<br>防禦</th>
             <th class="update_date" ng-click="order_by('update_date')" ng-show="update_page">更新<br>日期</th>
         </tr>
         <tr ng-repeat="champion in champions | orderBy : order | limitTo : items_per_page : page_start()" ng-mouseover="set_selected($index)" ng-class="{selected:is_selected($index)}">
@@ -54,31 +96,32 @@
             <td>{{ item_index($index) }}</td>
             <td class="name" ng-class="{ordered:is_ordered('name')}">{{ champion.name }}</td>
             <td class="eng_name" ng-class="{ordered:is_ordered('eng_name')}">{{ champion.eng_name }}</td>
-            <td class="hp" ng-class="{ordered:is_ordered('hp')}">{{ champion.hp }}</td>
-            <td class="hpperlevel" ng-class="{ordered:is_ordered('hpperlevel')}">{{ champion.hpperlevel }}</td>
-            <td class="hpmax" ng-class="{ordered:is_ordered('hpmax')}">{{ champion.hpmax }}</td>
-            <td class="hpregen" ng-class="{ordered:is_ordered('hpregen')}">{{ champion.hpregen }}</td>
-            <td class="hpregenperlevel" ng-class="{ordered:is_ordered('hpregenperlevel')}">{{ champion.hpregenperlevel }}</td>
-            <td class="hpregenmax" ng-class="{ordered:is_ordered('hpregenmax')}">{{ champion.hpregenmax }}</td>
-            <td class="mp" ng-class="{ordered:is_ordered('mp')}">{{ champion.mp }}</td>
-            <td class="mpperlevel" ng-class="{ordered:is_ordered('mpperlevel')}">{{ champion.mpperlevel }}</td>
-            <td class="mpmax" ng-class="{ordered:is_ordered('mpmax')}">{{ champion.mpmax }}</td>
-            <td class="mpregen" ng-class="{ordered:is_ordered('mpregen')}">{{ champion.mpregen }}</td>
-            <td class="mpregenperlevel" ng-class="{ordered:is_ordered('mpregenperlevel')}">{{ champion.mpregenperlevel }}</td>
-            <td class="mpregenmax" ng-class="{ordered:is_ordered('mpregenmax')}">{{ champion.mpregenmax }}</td>
-            <td class="movespeed" ng-class="{ordered:is_ordered('movespeed')}">{{ champion.movespeed }}</td>
-            <td class="attackdamage" ng-class="{ordered:is_ordered('attackdamage')}">{{ champion.attackdamage }}</td>
-            <td class="attackdamageperlevel" ng-class="{ordered:is_ordered('attackdamageperlevel')}">{{ champion.attackdamageperlevel }}</td>
-            <td class="attackdamagemax" ng-class="{ordered:is_ordered('attackdamagemax')}">{{ champion.attackdamagemax }}</td>
-            <td class="attackspeed" ng-class="{ordered:is_ordered('attackspeed')}">{{ champion.attackspeed }}</td>
-            <td class="attackspeedperlevel" ng-class="{ordered:is_ordered('attackspeedperlevel')}">{{ champion.attackspeedperlevel }}</td>
-            <td class="attackrange" ng-class="{ordered:is_ordered('attackrange')}">{{ champion.attackrange }}</td>
-            <td class="armor" ng-class="{ordered:is_ordered('armor')}">{{ champion.armor }}</td>
-            <td class="armorperlevel" ng-class="{ordered:is_ordered('armorperlevel')}">{{ champion.armorperlevel }}</td>
-            <td class="armormax" ng-class="{ordered:is_ordered('armormax')}">{{ champion.armormax }}</td>
-            <td class="spellblock" ng-class="{ordered:is_ordered('spellblock')}">{{ champion.spellblock }}</td>
-            <td class="spellblockperlevel" ng-class="{ordered:is_ordered('spellblockperlevel')}">{{ champion.spellblockperlevel }}</td>
-            <td class="spellblockmax" ng-class="{ordered:is_ordered('spellblockmax')}">{{ champion.spellblockmax }}</td>
+            <td class="hp" ng-class="{ordered:is_ordered('hp')}" ng-show="show_column(show_hp)">{{ champion.hp }}</td>
+            <td class="hpperlevel" ng-class="{ordered:is_ordered('hpperlevel')}" ng-show="show_column(show_hpperlevel)">{{ champion.hpperlevel }}</td>
+            <td class="hpmax" ng-class="{ordered:is_ordered('hpmax')}" ng-show="show_column(show_hpmax)">{{ champion.hpmax }}</td>
+            <td class="hpregen" ng-class="{ordered:is_ordered('hpregen')}" ng-show="show_column(show_hpregen)">{{ champion.hpregen }}</td>
+            <td class="hpregenperlevel" ng-class="{ordered:is_ordered('hpregenperlevel')}" ng-show="show_column(show_hpregenperlevel)">{{ champion.hpregenperlevel }}</td>
+            <td class="hpregenmax" ng-class="{ordered:is_ordered('hpregenmax')}" ng-show="show_column(show_hpregenmax)">{{ champion.hpregenmax }}</td>
+            <td class="mp" ng-class="{ordered:is_ordered('mp')}" ng-show="show_column(show_mp)">{{ champion.mp }}</td>
+            <td class="mpperlevel" ng-class="{ordered:is_ordered('mpperlevel')}" ng-show="show_column(show_mpperlevel)">{{ champion.mpperlevel }}</td>
+            <td class="mpmax" ng-class="{ordered:is_ordered('mpmax')}" ng-show="show_column(show_mpmax)">{{ champion.mpmax }}</td>
+            <td class="mpregen" ng-class="{ordered:is_ordered('mpregen')}" ng-show="show_column(show_mpregen)">{{ champion.mpregen }}</td>
+            <td class="mpregenperlevel" ng-class="{ordered:is_ordered('mpregenperlevel')}" ng-show="show_column(show_mpregenperlevel)">{{ champion.mpregenperlevel }}</td>
+            <td class="mpregenmax" ng-class="{ordered:is_ordered('mpregenmax')}" ng-show="show_column(show_mpregenmax)">{{ champion.mpregenmax }}</td>
+            <td class="movespeed" ng-class="{ordered:is_ordered('movespeed')}" ng-show="show_column(show_movespeed)">{{ champion.movespeed }}</td>
+            <td class="attackdamage" ng-class="{ordered:is_ordered('attackdamage')}" ng-show="show_column(show_attackdamage)">{{ champion.attackdamage }}</td>
+            <td class="attackdamageperlevel" ng-class="{ordered:is_ordered('attackdamageperlevel')}" ng-show="show_column(show_attackdamageperlevel)">{{ champion.attackdamageperlevel }}</td>
+            <td class="attackdamagemax" ng-class="{ordered:is_ordered('attackdamagemax')}" ng-show="show_column(show_attackdamagemax)">{{ champion.attackdamagemax }}</td>
+            <td class="attackspeed" ng-class="{ordered:is_ordered('attackspeed')}" ng-show="show_column(show_attackspeed)">{{ champion.attackspeed }}</td>
+            <td class="attackspeedperlevel" ng-class="{ordered:is_ordered('attackspeedperlevel')}" ng-show="show_column(show_attackspeedperlevel)">{{ champion.attackspeedperlevel }}</td>
+            <td class="attackspeedmax" ng-class="{ordered:is_ordered('attackspeedmax')}" ng-show="show_column(show_attackspeedmax)">{{ champion.attackspeedmax }}</td>
+            <td class="attackrange" ng-class="{ordered:is_ordered('attackrange')}" ng-show="show_column(show_attackrange)">{{ champion.attackrange }}</td>
+            <td class="armor" ng-class="{ordered:is_ordered('armor')}" ng-show="show_column(show_armor)">{{ champion.armor }}</td>
+            <td class="armorperlevel" ng-class="{ordered:is_ordered('armorperlevel')}" ng-show="show_column(show_armorperlevel)">{{ champion.armorperlevel }}</td>
+            <td class="armormax" ng-class="{ordered:is_ordered('armormax')}" ng-show="show_column(show_armormax)">{{ champion.armormax }}</td>
+            <td class="spellblock" ng-class="{ordered:is_ordered('spellblock')}" ng-show="show_column(show_spellblock)">{{ champion.spellblock }}</td>
+            <td class="spellblockperlevel" ng-class="{ordered:is_ordered('spellblockperlevel')}" ng-show="show_column(show_spellblockperlevel)">{{ champion.spellblockperlevel }}</td>
+            <td class="spellblockmax" ng-class="{ordered:is_ordered('spellblockmax')}" ng-show="show_column(show_spellblockmax)">{{ champion.spellblockmax }}</td>
             <td class="update_date" ng-class="{ordered:is_ordered('update_date')}" ng-show="update_page">{{ format_time(champion.update_date) }}</td>
             {% endverbatim %}
         </tr>

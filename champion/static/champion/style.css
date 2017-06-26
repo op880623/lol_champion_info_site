@@ -22,6 +22,16 @@ div.table-container {
   width: 85%;
 }
 
+table.table_checkbox {
+  padding: 1em;
+  border: none;
+  font: normal 1em/2em 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif;
+}
+
+table.table_checkbox tr td {
+  line-height: 1.7em;
+}
+
 table.table_style {
   border-collapse: collapse;
   border-color: #CCC;
