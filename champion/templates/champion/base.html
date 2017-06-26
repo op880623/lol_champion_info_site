@@ -49,9 +49,9 @@
             <th class="spellblockmax" ng-click="order_by('spellblockmax')">最大<br>魔法<br>防禦</th>
             <th class="update_date" ng-click="order_by('update_date')" ng-show="update_page">更新<br>日期</th>
         </tr>
-        <tr ng-repeat="champion in champions | orderBy:order" ng-mouseover="set_selected($index)" ng-class="{selected:is_selected($index)}" ng-show="isInThisPage($index)">
+        <tr ng-repeat="champion in champions | orderBy : order | limitTo : items_per_page : page_start()" ng-mouseover="set_selected($index)" ng-class="{selected:is_selected($index)}">
             {% verbatim %}
-            <td>{{ $index + 1 }}</td>
+            <td>{{ item_index($index) }}</td>
             <td class="name" ng-class="{ordered:is_ordered('name')}">{{ champion.name }}</td>
             <td class="eng_name" ng-class="{ordered:is_ordered('eng_name')}">{{ champion.eng_name }}</td>
             <td class="hp" ng-class="{ordered:is_ordered('hp')}">{{ champion.hp }}</td>

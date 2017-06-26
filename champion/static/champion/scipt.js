@@ -43,13 +43,11 @@ app.controller('customersCtrl', function($scope, $http) {
     $scope.is_last_page = function () {
         return $scope.page * $scope.items_per_page > $scope.champions.length;
     }
-    $scope.isInThisPage = function (index) {
-        if (($scope.page - 1) * $scope.items_per_page <= index && index < $scope.page * $scope.items_per_page) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    $scope.page_start = function () {
+        return ($scope.page - 1) * $scope.items_per_page
+    }
+    $scope.item_index = function (index) {
+        return $scope.page_start() + index + 1;
     }
 
 // order
