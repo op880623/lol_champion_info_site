@@ -26,7 +26,35 @@ app.controller('customersCtrl', function($scope, $http) {
     }
 
 
+    // angular.copy($scope.champions, $scope.champions_to_list);
+
+// pagination
+    $scope.page = 1;
+    $scope.items_per_page = 25;
+    $scope.page_sub = function () {
+        $scope.page = $scope.page - 1;
+    }
+    $scope.page_add = function () {
+        $scope.page = $scope.page + 1;
+    }
+    $scope.is_first_page = function () {
+        return $scope.page === 1;
+    }
+    $scope.is_last_page = function () {
+        return $scope.page * $scope.items_per_page > $scope.champions.length;
+    }
+    $scope.isInThisPage = function (index) {
+        if (($scope.page - 1) * $scope.items_per_page <= index && index < $scope.page * $scope.items_per_page) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+// order
     $scope.order = 'eng_name';
+    // change column which list is ordered by
     $scope.order_by = function (order) {
         if ($scope.order.replace(/-/i, '') === order && $scope.order.search(/-/i) >= 0) {
             $scope.order = order;
@@ -35,12 +63,13 @@ app.controller('customersCtrl', function($scope, $http) {
             $scope.order = '-' + order;
         }
     }
+    // colorize column which list is ordered by
     $scope.is_ordered = function (order) {
         var entry = $scope.order.replace(/-/i, '');
         return order === entry;
     }
 
-
+// colorize row which mouse on
     $scope.selectedRow = null;
     $scope.set_selected = function (selectedRow) {
         $scope.selectedRow = selectedRow;

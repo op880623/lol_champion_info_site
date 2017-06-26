@@ -49,7 +49,7 @@
             <th class="spellblockmax" ng-click="order_by('spellblockmax')">最大<br>魔法<br>防禦</th>
             <th class="update_date" ng-click="order_by('update_date')" ng-show="update_page">更新<br>日期</th>
         </tr>
-        <tr ng-repeat="champion in champions | orderBy:order" ng-mouseover="set_selected($index)" ng-class="{selected:is_selected($index)}">
+        <tr ng-repeat="champion in champions | orderBy:order" ng-mouseover="set_selected($index)" ng-class="{selected:is_selected($index)}" ng-show="isInThisPage($index)">
             {% verbatim %}
             <td>{{ $index + 1 }}</td>
             <td class="name" ng-class="{ordered:is_ordered('name')}">{{ champion.name }}</td>
@@ -83,6 +83,8 @@
             {% endverbatim %}
         </tr>
     </table>
+    <button ng-click="page_sub()" ng-disabled="is_first_page()">previous</button>
+    <button ng-click="page_add()" ng-disabled="is_last_page()">next</button>
 </div>
 
 <!-- Footer -->
