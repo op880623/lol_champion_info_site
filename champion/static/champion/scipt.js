@@ -37,8 +37,6 @@ app.controller('customersCtrl', function($scope, $http) {
         return item || !$scope.has_selected_column();
     }
 
-    // angular.copy($scope.champions, $scope.champions_to_list);
-
 // pagination
     $scope.page = 1;
     $scope.items_per_page = 25;
@@ -52,7 +50,7 @@ app.controller('customersCtrl', function($scope, $http) {
         return $scope.page === 1;
     }
     $scope.is_last_page = function () {
-        return $scope.page * $scope.items_per_page > $scope.champions.length;
+        return $scope.page * $scope.items_per_page >= $scope.champions.length;
     }
     $scope.page_start = function () {
         return ($scope.page - 1) * $scope.items_per_page;
