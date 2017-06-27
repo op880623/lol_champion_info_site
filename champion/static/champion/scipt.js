@@ -87,6 +87,6 @@ app.controller('customersCtrl', function($scope, $http) {
 
 
     $scope.format_time = function (time) {
-        return time.replace(/\.\d+\+00:00/i, '');
+        return time.replace(/ /i, 'T');
     }
 });

@@ -89,7 +89,7 @@
             <th class="spellblock" ng-click="order_by('spellblock')" ng-show="show_column(show_spellblock)">魔法<br>防禦</th>
             <th class="spellblockperlevel" ng-click="order_by('spellblockperlevel')" ng-show="show_column(show_spellblockperlevel)">魔法<br>防禦<br>成長</th>
             <th class="spellblockmax" ng-click="order_by('spellblockmax')" ng-show="show_column(show_spellblockmax)">最大<br>魔法<br>防禦</th>
-            <th class="update_date" ng-click="order_by('update_date')" ng-show="update_page">更新<br>日期</th>
+            <th class="update_date" ng-click="order_by('update_date')" ng-show="update_page">更新日期</th>
         </tr>
         <tr ng-repeat="champion in champions | orderBy : order | limitTo : items_per_page : page_start()" ng-mouseover="set_selected($index)" ng-class="{selected:is_selected($index)}">
             {% verbatim %}
@@ -122,7 +122,7 @@
             <td class="spellblock" ng-class="{ordered:is_ordered('spellblock')}" ng-show="show_column(show_spellblock)">{{ champion.spellblock }}</td>
             <td class="spellblockperlevel" ng-class="{ordered:is_ordered('spellblockperlevel')}" ng-show="show_column(show_spellblockperlevel)">{{ champion.spellblockperlevel }}</td>
             <td class="spellblockmax" ng-class="{ordered:is_ordered('spellblockmax')}" ng-show="show_column(show_spellblockmax)">{{ champion.spellblockmax }}</td>
-            <td class="update_date" ng-class="{ordered:is_ordered('update_date')}" ng-show="update_page">{{ format_time(champion.update_date) }}</td>
+            <td class="update_date" ng-class="{ordered:is_ordered('update_date')}" ng-show="update_page">{{ format_time(champion.update_date) | date : 'medium' }}</td>
             {% endverbatim %}
         </tr>
     </table>

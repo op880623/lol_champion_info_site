@@ -67,8 +67,12 @@ table.table_style tr > th {
   first-child-border-left: none !important;
 }
 
-table.table_style td.name, table.table_style td.eng_name {
-  min-width: 70px;
+table.table_style td.name {
+  min-width: 60px;
+}
+
+table.table_style td.eng_name, table.table_style td.update_date {
+  min-width: 80px;
 }
 
 table.table_style + ul.pagination {
