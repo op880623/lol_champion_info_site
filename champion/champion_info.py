@@ -45,6 +45,7 @@ def champion_info_from(url):
             check_diff(champion, 'attackdamagemax'     , round(champion.attackdamage + 17*champion.attackdamageperlevel, 3))
             check_diff(champion, 'attackspeed'         , round(0.625/(1+float(ability_value_of('stats_attackspeedoffset'))), 3))
             check_diff(champion, 'attackspeedperlevel' , round(float(ability_value_of('stats_attackspeedperlevel')), 3))
+            check_diff(champion, 'attackspeedmax'      , round(champion.attackspeed * (1 + champion.attackspeedperlevel * 17 / 100), 3))
             check_diff(champion, 'attackrange'         , int(ability_value_of('stats_attackrange')))
             check_diff(champion, 'armor'               , round(float(ability_value_of('stats_armor')), 3))
             check_diff(champion, 'armorperlevel'       , round(float(ability_value_of('stats_armorperlevel')), 3))
