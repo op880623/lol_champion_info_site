@@ -58,7 +58,7 @@ table.table_style td, table.table_style th {
 }
 
 table.table_style tr > th {
-  background: #FCFCFC url(./images/header-bg.png) left bottom repeat-x;
+  background: #FCFCFC url(../images/header-bg.png) left bottom repeat-x;
   border-bottom: 1px solid #DDD;
   padding: 2px 5px;
   font-size: 11px;
@@ -77,7 +77,7 @@ table.table_style td.eng_name, table.table_style td.update_date {
 
 table.table_style + ul.pagination {
   font: normal 11px/14px 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif;
-  background: white url(./images/pagination-bg.gif) left 180% repeat-x;
+  background: white url(../images/pagination-bg.gif) left 180% repeat-x;
   overflow: auto;
   margin: 0;
   padding: 10px;
