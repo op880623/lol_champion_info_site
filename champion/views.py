@@ -6,7 +6,7 @@ import datetime
 from .models import Champion
 
 def champion(request):
-    return render(request, 'champion/base.html')
+    return render(request, 'templates/base.html')
 
 
 # two functions below send data to the page.

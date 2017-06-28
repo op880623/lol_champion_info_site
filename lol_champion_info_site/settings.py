@@ -61,6 +61,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
+            'static/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
