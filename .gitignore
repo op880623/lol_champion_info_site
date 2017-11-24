@@ -5,3 +5,4 @@ staticfiles
 *.log
 db.sqlite3
 *.sass
+*.cnf
