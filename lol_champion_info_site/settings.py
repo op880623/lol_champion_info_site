@@ -84,10 +84,8 @@ WSGI_APPLICATION = 'lol_champion_info_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(BASE_DIR, 'db.cnf'),
-        }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db_lol_info',
     }
 }
 
