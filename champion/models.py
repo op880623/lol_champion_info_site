@@ -70,6 +70,13 @@ class Champion(models.Model):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def get_by_name(cls, name):
+        if Champion.objects.filter(name = name).exists():
+            return Champion.objects.get(name = name)
+        else:
+            return cls(name = name)
+
     def to_json(self):
         attrlist=[]
         for attr in self.attributes:
