@@ -77,11 +77,13 @@ class Champion(models.Model):
         else:
             return cls(name = name)
 
-    def update(self, attr, stat):
-        if getattr(self, attr) != stat:
-            setattr(self, attr, stat)
-            print(self.eng_name + " " + attr + " is updated.")
-            self.update_date = timezone.now()
+    def update(self, value):
+        for attr in value:
+            if getattr(self, attr) != value[attr]:
+                setattr(self, attr, value[attr])
+                print(self.eng_name + " " + attr + " is updated.")
+                self.update_date = timezone.now()
+        self.save()
 
     def to_json(self):
         attrlist=[]

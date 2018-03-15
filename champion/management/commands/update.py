@@ -42,116 +42,66 @@ class Command(BaseCommand):
                 return None
 
             raw_info = BeautifulSoup(page.text, 'lxml')
-            c = Champion.get_by_name(value('champion_name', num=False))
-
+            stats = {}
 
             # name
-            eng_name = value('champintro-stats__info-name-en', num=False)
-            c.update('eng_name', eng_name)
-
-            name = value('champion_name', num=False)
-            c.update('name', name)
-
+            stats['eng_name'] = value('champintro-stats__info-name-en', num=False)
+            stats['name'] = value('champion_name', num=False)
 
             # hp
-            hp = value('stats_hp')
-            c.update('hp', hp)
-
-            hpperlevel = value('stats_hpperlevel')
-            c.update('hpperlevel', hpperlevel)
-
-            hpmax = value_max(hp, hpperlevel)
-            c.update('hpmax', hpmax)
-
-            hpregen = value('stats_hpregen')
-            c.update('hpregen', hpregen)
-
-            hpregenperlevel = value('stats_hpregenperlevel')
-            c.update('hpregenperlevel', hpregenperlevel)
-
-            hpregenmax = value_max(hpregen, hpregenperlevel)
-            c.update('hpregenmax', hpregenmax)
-
+            stats['hp'] = value('stats_hp')
+            stats['hpperlevel'] = value('stats_hpperlevel')
+            stats['hpmax'] = value_max(stats['hp'], stats['hpperlevel'])
+            stats['hpregen'] = value('stats_hpregen')
+            stats['hpregenperlevel'] = value('stats_hpregenperlevel')
+            stats['hpregenmax'] = value_max(stats['hpregen'],
+                                            stats['hpregenperlevel'])
 
             # mp
-            mp = value('stats_mp')
-            c.update('mp', mp)
+            stats['mp'] = value('stats_mp')
+            stats['mpperlevel'] = value('stats_mpperlevel')
+            stats['mpmax'] = value_max(stats['mp'], stats['mpperlevel'])
+            stats['mpregen'] = value('stats_mpregen')
+            stats['mpregenperlevel'] = value('stats_mpregenperlevel')
+            stats['mpregenmax'] = value_max(stats['mpregen'],
+                                            stats['mpregenperlevel'])
 
-            mpperlevel = value('stats_mpperlevel')
-            c.update('mpperlevel', mpperlevel)
+            # move speed
+            stats['movespeed'] = int(value('stats_movespeed', num=False))
 
-            mpmax = value_max(mp, mpperlevel)
-            c.update('mpmax', mpmax)
+            # attack damage
+            stats['attackdamage'] = value('stats_attackdamage')
+            stats['attackdamageperlevel'] = value('stats_attackdamageperlevel')
+            stats['attackdamagemax'] = value_max(stats['attackdamage'],
+                                                stats['attackdamageperlevel'])
 
-            mpregen = value('stats_mpregen')
-            c.update('mpregen', mpregen)
-
-            mpregenperlevel = value('stats_mpregenperlevel')
-            c.update('mpregenperlevel', mpregenperlevel)
-
-            mpregenmax = value_max(mpregen, mpregenperlevel)
-            c.update('mpregenmax', mpregenmax)
-
-            # movespeed
-            movespeed = int(value('stats_movespeed', num=False))
-            c.update('movespeed', movespeed)
-
-
-            # attackdamage
-            attackdamage = value('stats_attackdamage')
-            c.update('attackdamage', attackdamage)
-
-            attackdamageperlevel = value('stats_attackdamageperlevel')
-            c.update('attackdamageperlevel', attackdamageperlevel)
-
-            attackdamagemax = value_max(attackdamage, attackdamageperlevel)
-            c.update('attackdamagemax', attackdamagemax)
-
-
-            # attackspeed
-            attackspeed = round(
+            # attack speed
+            stats['attackspeed'] = round(
                 0.625 / (1 + float(value('stats_attackspeedoffset', num=False))),
                 3
             )
-            c.update('attackspeed', attackspeed)
-
-            attackspeedperlevel = value('stats_attackspeedperlevel')
-            c.update('attackspeedperlevel', attackspeedperlevel)
-
-            attackspeedmax = round(
-                c.attackspeed * (1 + c.attackspeedperlevel * 17 / 100),
+            stats['attackspeedperlevel'] = value('stats_attackspeedperlevel')
+            stats['attackspeedmax'] = round(
+                stats['attackspeed']
+                * (1 + stats['attackspeedperlevel']
+                * 17 / 100),
                 3
             )
-            c.update('attackspeedmax', attackspeedmax)
 
-
-            # special attribute
-            attackrange = int(value('stats_attackrange', num=False))
-            c.update('attackrange', attackrange)
-
+            # attack range
+            stats['attackrange'] = int(value('stats_attackrange', num=False))
 
             # armor
-            armor = value('stats_armor')
-            c.update('armor', armor)
+            stats['armor'] = value('stats_armor')
+            stats['armorperlevel'] = value('stats_armorperlevel')
+            stats['armormax'] = value_max(stats['armor'], stats['armorperlevel'])
 
-            armorperlevel = value('stats_armorperlevel')
-            c.update('armorperlevel', armorperlevel)
+            # spell block
+            stats['spellblock'] = value('stats_spellblock')
+            stats['spellblockperlevel'] = value('stats_spellblockperlevel')
+            stats['spellblockmax'] = value_max(stats['spellblock'],
+                                                stats['spellblockperlevel'])
 
-            armormax = value_max(armor, armorperlevel)
-            c.update('armormax', armormax)
-
-
-            # spellblock
-            spellblock = value('stats_spellblock')
-            c.update('spellblock', spellblock)
-
-            spellblockperlevel = value('stats_spellblockperlevel')
-            c.update('spellblockperlevel', spellblockperlevel)
-
-            spellblockmax = value_max(spellblock, spellblockperlevel)
-            c.update('spellblockmax', spellblockmax)
-
-
-            c.save()
+            Champion.get_by_name(stats['name']).update(stats)
 
         print("Update is finished.")
