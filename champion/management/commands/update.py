@@ -1,3 +1,5 @@
+from re import finditer
+
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -27,15 +29,14 @@ class Command(BaseCommand):
         content = browser.page_source
         browser.quit()
 
-        # get champion url list
-        soup_content = BeautifulSoup(content, 'lxml')
-        url_tags = soup_content.find_all('a', class_='champlist-item__link')
+        # make iterator for champion pages
+        pages = map(
+            lambda url: requests.get('https://lol.garena.tw' + url.group(1)),
+            finditer('href="(/game/champion/\w+)"', content)
+        )
 
-        # get champion info from each url
-        for url_tag in url_tags:
-            url = 'https://lol.garena.tw' + url_tag['href']
-            page = requests.get(url)
-
+        # get champion info from each page
+        for page in pages:
             # handle url with problem
             if page.status_code != 200:
                 print("Unable to connect the site:" + url)
