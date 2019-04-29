@@ -23,9 +23,6 @@ class Champion(models.Model):
     attackdamage         = models.FloatField(max_length=10, default=0)
     attackdamageperlevel = models.FloatField(max_length=10, default=0)
     attackdamagemax      = models.FloatField(max_length=10, default=0)
-    attackspeed          = models.FloatField(max_length=10, default=0)
-    attackspeedperlevel  = models.FloatField(max_length=10, default=0)
-    attackspeedmax       = models.FloatField(max_length=10, default=0)
     attackrange          = models.IntegerField(default=0)
     armor                = models.FloatField(max_length=10, default=0)
     armorperlevel        = models.FloatField(max_length=10, default=0)
@@ -54,9 +51,6 @@ class Champion(models.Model):
         'attackdamage',
         'attackdamageperlevel',
         'attackdamagemax',
-        'attackspeed',
-        'attackspeedperlevel',
-        'attackspeedmax',
         'attackrange',
         'armor',
         'armorperlevel',

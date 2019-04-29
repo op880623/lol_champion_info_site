@@ -76,19 +76,6 @@ class Command(BaseCommand):
             stats['attackdamagemax'] = value_max(stats['attackdamage'],
                                                 stats['attackdamageperlevel'])
 
-            # attack speed
-            stats['attackspeed'] = round(
-                0.625 / (1 + float(value('stats_attackspeedoffset', num=False))),
-                3
-            )
-            stats['attackspeedperlevel'] = value('stats_attackspeedperlevel')
-            stats['attackspeedmax'] = round(
-                stats['attackspeed']
-                * (1 + stats['attackspeedperlevel']
-                * 17 / 100),
-                3
-            )
-
             # attack range
             stats['attackrange'] = int(value('stats_attackrange', num=False))
 

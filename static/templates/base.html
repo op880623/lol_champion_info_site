@@ -20,41 +20,33 @@
     <table class="table_checkbox">
         <tr>
             <td><input type="checkbox" ng-model="show_hp">生命</td>
-            <td><input type="checkbox" ng-model="show_mp">魔力</td>
-            <td><input type="checkbox" ng-model="show_attackdamage">物理攻擊</td>
-            <td><input type="checkbox" ng-model="show_armor">物理防禦</td>
-            <td><input type="checkbox" ng-model="show_attackrange">攻擊距離</td>
-
+            <td><input type="checkbox" ng-model="show_hpperlevel">生命成長</td>
+            <td><input type="checkbox" ng-model="show_hpmax">最大生命</td>
+            <td><input type="checkbox" ng-model="show_hpregen">生命回復</td>
+            <td><input type="checkbox" ng-model="show_hpregenperlevel">生命回復成長</td>
+            <td><input type="checkbox" ng-model="show_hpregenmax">最大生命回復</td>
         </tr>
         <tr>
-            <td><input type="checkbox" ng-model="show_hpperlevel">生命成長</td>
+            <td><input type="checkbox" ng-model="show_mp">魔力</td>
             <td><input type="checkbox" ng-model="show_mpperlevel">魔力成長</td>
+            <td><input type="checkbox" ng-model="show_mpmax">最大魔力</td>
+            <td><input type="checkbox" ng-model="show_mpregen">魔力回復</td>
+            <td><input type="checkbox" ng-model="show_mpregenperlevel">魔力回復成長</td>
+            <td><input type="checkbox" ng-model="show_mpregenmax">最大魔力回復</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ng-model="show_attackdamage">物理攻擊</td>
             <td><input type="checkbox" ng-model="show_attackdamageperlevel">物理攻擊成長</td>
-            <td><input type="checkbox" ng-model="show_armorperlevel">物理防禦成長</td>
+            <td><input type="checkbox" ng-model="show_attackdamagemax">最大物理攻擊</td>
+            <td><input type="checkbox" ng-model="show_attackrange">攻擊距離</td>
             <td><input type="checkbox" ng-model="show_movespeed">移動速度</td>
         </tr>
         <tr>
-            <td><input type="checkbox" ng-model="show_hpmax">最大生命</td>
-            <td><input type="checkbox" ng-model="show_mpmax">最大魔力</td>
-            <td><input type="checkbox" ng-model="show_attackdamagemax">最大物理攻擊</td>
+            <td><input type="checkbox" ng-model="show_armor">物理防禦</td>
+            <td><input type="checkbox" ng-model="show_armorperlevel">物理防禦成長</td>
             <td><input type="checkbox" ng-model="show_armormax">最大物理防禦</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" ng-model="show_hpregen">生命回復</td>
-            <td><input type="checkbox" ng-model="show_mpregen">魔力回復</td>
-            <td><input type="checkbox" ng-model="show_attackspeed">攻擊速度</td>
             <td><input type="checkbox" ng-model="show_spellblock">魔法防禦</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" ng-model="show_hpregenperlevel">生命回復成長</td>
-            <td><input type="checkbox" ng-model="show_mpregenperlevel">魔力回復成長</td>
-            <td><input type="checkbox" ng-model="show_attackspeedperlevel">攻擊速度成長</td>
             <td><input type="checkbox" ng-model="show_spellblockperlevel">魔法防禦成長</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" ng-model="show_hpregenmax">最大生命回復</td>
-            <td><input type="checkbox" ng-model="show_mpregenmax">最大魔力回復</td>
-            <td><input type="checkbox" ng-model="show_attackspeedmax">最大攻擊速度</td>
             <td><input type="checkbox" ng-model="show_spellblockmax">最大魔法防禦</td>
         </tr>
     </table>
@@ -79,9 +71,6 @@
             <th class="attackdamage" ng-click="order_by('attackdamage')" ng-show="show_column(show_attackdamage)">物理<br>攻擊</th>
             <th class="attackdamageperlevel" ng-click="order_by('attackdamageperlevel')" ng-show="show_column(show_attackdamageperlevel)">物理<br>攻擊<br>成長</th>
             <th class="attackdamagemax" ng-click="order_by('attackdamagemax')" ng-show="show_column(show_attackdamagemax)">最大<br>物理<br>攻擊</th>
-            <th class="attackspeed" ng-click="order_by('attackspeed')" ng-show="show_column(show_attackspeed)">攻擊<br>速度</th>
-            <th class="attackspeedperlevel" ng-click="order_by('attackspeedperlevel')" ng-show="show_column(show_attackspeedperlevel)">攻擊<br>速度<br>成長</th>
-            <th class="attackspeedmax" ng-click="order_by('attackspeedmax')" ng-show="show_column(show_attackspeedmax)">最大<br>攻擊<br>速度</th>
             <th class="attackrange" ng-click="order_by('attackrange')" ng-show="show_column(show_attackrange)">攻擊<br>距離</th>
             <th class="armor" ng-click="order_by('armor')" ng-show="show_column(show_armor)">物理<br>防禦</th>
             <th class="armorperlevel" ng-click="order_by('armorperlevel')" ng-show="show_column(show_armorperlevel)">物理<br>防禦<br>成長</th>
@@ -112,9 +101,6 @@
             <td class="attackdamage" ng-class="{ordered:is_ordered('attackdamage')}" ng-show="show_column(show_attackdamage)">{{ champion.attackdamage }}</td>
             <td class="attackdamageperlevel" ng-class="{ordered:is_ordered('attackdamageperlevel')}" ng-show="show_column(show_attackdamageperlevel)">{{ champion.attackdamageperlevel }}</td>
             <td class="attackdamagemax" ng-class="{ordered:is_ordered('attackdamagemax')}" ng-show="show_column(show_attackdamagemax)">{{ champion.attackdamagemax }}</td>
-            <td class="attackspeed" ng-class="{ordered:is_ordered('attackspeed')}" ng-show="show_column(show_attackspeed)">{{ champion.attackspeed }}</td>
-            <td class="attackspeedperlevel" ng-class="{ordered:is_ordered('attackspeedperlevel')}" ng-show="show_column(show_attackspeedperlevel)">{{ champion.attackspeedperlevel }}</td>
-            <td class="attackspeedmax" ng-class="{ordered:is_ordered('attackspeedmax')}" ng-show="show_column(show_attackspeedmax)">{{ champion.attackspeedmax }}</td>
             <td class="attackrange" ng-class="{ordered:is_ordered('attackrange')}" ng-show="show_column(show_attackrange)">{{ champion.attackrange }}</td>
             <td class="armor" ng-class="{ordered:is_ordered('armor')}" ng-show="show_column(show_armor)">{{ champion.armor }}</td>
             <td class="armorperlevel" ng-class="{ordered:is_ordered('armorperlevel')}" ng-show="show_column(show_armorperlevel)">{{ champion.armorperlevel }}</td>
